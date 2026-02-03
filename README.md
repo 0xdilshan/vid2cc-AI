@@ -41,12 +41,22 @@ Once installed, the `vid2cc` command is available globally in your terminal.
 
 ---
 
-### Advanced Options
+### 🛠️ Advanced Options
 
-Choose a specific model size (`tiny`, `base`, `small`, `medium`, `large`) to balance speed and accuracy:
+Fine-tune your output using the following flags:
+
+| Flag | Description |
+| :--- | :--- |
+| `--model [size]` | Choose Whisper model: `tiny`, `base`, `small`, `medium`, or `large`. |
+| `--embed` | **Soft Subtitles:** Adds the SRT as a metadata track. Fast and allows users to toggle subtitles on/off in players like VLC. |
+| `--hardcode` | **Burn-in Subtitles:** Permanently draws subtitles onto the video. Essential for social media (Instagram/TikTok) where players don't support SRT files. |
+
+#### Examples
+
+*For maximum accuracy with toggleable subs:*
 
 ```bash
-vid2cc input_video.mkv --model medium
+vid2cc example.mp4 --model large --embed
 ```
 
 
@@ -69,10 +79,10 @@ pytest
 ## 🗺️ Roadmap
 
 - [x] Local video → SRT transcription
-- [ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)
-- [ ] Embed subtitles into video containers (`--embed`)
-- [ ] Burn-in subtitles (`--hardcode`)
+- [x] Embed subtitles into video containers (`--embed`)
+- [x] Burn-in subtitles (`--hardcode`)
 - [ ] Multilingual transcription & translation support
+- [ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)
 
 ## 🛠️ Tech Stack
 

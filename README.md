@@ -59,6 +59,22 @@ Fine-tune your output using the following flags:
 vid2cc example.mp4 --model large --embed
 ```
 
+## 📦 Usage as a Library
+
+You can integrate **vid2cc-AI** directly into your Python projects:
+
+```python
+from vid2cc_ai import Transcriber, extract_audio
+
+# Extract and Transcribe
+extract_audio("video.mp4", "audio.wav")
+ts = Transcriber("base")
+segments = ts.transcribe("audio.wav")
+
+for s in segments:
+    print(f"[{s['start']:.2f}s] {s['text']}")
+```
+
 
 ---
 

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Project Specific
+temp_audio.wav
+*.mp4
+*.mkv
+*.srt

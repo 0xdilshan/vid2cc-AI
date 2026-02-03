@@ -30,7 +30,7 @@ This tool requires FFmpeg to be installed on your system.
 ### 2. Install vid2cc-AI
 Install directly from the source for development:
 ```bash
-git clone https://github.com/yourusername/vid2cc-AI.git
+git clone https://github.com/0xdilshan/vid2cc-AI.git
 cd vid2cc-AI
 pip install -e .
 ```

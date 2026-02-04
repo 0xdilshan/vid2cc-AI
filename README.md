@@ -1,6 +1,6 @@
 # vid2cc-AI 🎙️🎬
 
-[![PyPI version](https://img.shields.io/pypi/v/vid2cc-ai.svg)](https://pypi.org/project/vid2cc-ai/)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-green.svg)](https://www.python.org/downloads/)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)

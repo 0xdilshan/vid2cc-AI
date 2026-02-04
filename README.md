@@ -1,12 +1,30 @@
 # vid2cc-AI 🎙️🎬
 
-
+[![PyPI version](https://img.shields.io/pypi/v/vid2cc-ai.svg)](https://pypi.org/project/vid2cc-ai/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-green.svg)](https://www.python.org/downloads/)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 ![CI Status](https://github.com/0xdilshan/vid2cc-AI/actions/workflows/ci.yml/badge.svg)
 
 **vid2cc-AI** is a high-performance CLI tool designed to bridge the gap between raw video and accessible content. By leveraging OpenAI's Whisper models and FFmpeg's robust media handling, it automates the creation of perfectly synced `.srt` subtitles.
+
+---
+
+# Table of contents
+
+- [vid2cc-AI 🎙️🎬](#vid2cc-ai-)
+  - [🚀 Key Features](#-key-features)
+  - [⚙️ Installation](#-installation)
+    - [1. Prerequisite: FFmpeg](#1-prerequisite-ffmpeg)
+    - [2. Install vid2cc-AI](#2-install-vid2cc-ai)
+  - [📖 How To Use](#-how-to-use)
+    - [🛠️ Advanced Options](#-advanced-options)
+    - [📦 Batch Processing](#-batch-processing)
+    - [📦 Usage as a Library](#-usage-as-a-library)
+  - [🧪 Testing](#-testing)
+  - [🗺️ Roadmap](#-roadmap)
+  - [🛠️ Tech Stack](#-tech-stack)
+  - [📄 License](#-license)
 
 ---
 
@@ -22,10 +40,12 @@
 ## ⚙️ Installation
 
 ### 1. Prerequisite: FFmpeg
-This tool requires FFmpeg to be installed on your system.
-- **macOS:** `brew install ffmpeg`
-- **Windows:** `choco install ffmpeg`
-- **Linux:** `sudo apt install ffmpeg`
+
+This tool requires **FFmpeg** to be installed on your system. 
+
+For a complete step-by-step guide on how to install FFmpeg on Windows (Winget/Choco), macOS (Homebrew), or Linux (Apt/Dnf/Pacman), please refer to the dedicated guide:
+
+👉 **[FFmpeg Installation Guide](./ffmpeg_installation.md)**
 
 ### 2. Install vid2cc-AI
 
@@ -76,7 +96,7 @@ vid2cc *.mp4 --model small --embed
 vid2cc video1.mp4 video2.mkv video3.mov --model base --embed
 ```
 
-## 📦 Usage as a Library
+### 📦 Usage as a Library
 
 You can integrate **vid2cc-AI** directly into your Python projects:
 
@@ -95,7 +115,7 @@ for s in segments:
 
 ---
 
-### 🧪 Testing
+## 🧪 Testing
 
 
 ```bash

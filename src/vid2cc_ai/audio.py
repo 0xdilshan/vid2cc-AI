@@ -1,6 +1,7 @@
 import subprocess
 import os
 import json
+import functools
 
 def extract_audio(video_path: str, output_path: str):
     """Uses FFmpeg to extract high-quality mono audio for Whisper."""
@@ -11,8 +12,6 @@ def extract_audio(video_path: str, output_path: str):
         "-y", output_path
     ]
     subprocess.run(command, capture_output=True, check=True)
-
-import json
 
 def get_video_codec(video_path: str) -> str:
     """Uses ffprobe to detect the video codec of the input file."""
@@ -30,6 +29,19 @@ def get_video_codec(video_path: str) -> str:
     except (subprocess.CalledProcessError, IndexError, KeyError, json.JSONDecodeError):
         # Fallback to h264 if probe fails
         return "h264"
+    
+@functools.lru_cache(max_size=None)
+def has_encoder(encoder_name: str) -> bool:
+    """Checks if the current FFmpeg installation supports a specific encoder."""
+    try:
+        # We search the list of encoders for the specific name
+        result = subprocess.run(
+            ["ffmpeg", "-encoders"], 
+            capture_output=True, text=True, check=True
+        )
+        return encoder_name in result.stdout
+    except subprocess.CalledProcessError:
+        return False
 
 def embed_subtitles(video_path: str, srt_path: str, output_path: str):
     """Soft-embeds SRT as a subtitle track (no re-encoding)."""

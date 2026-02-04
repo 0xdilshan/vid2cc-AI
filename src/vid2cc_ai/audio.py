@@ -13,15 +13,22 @@ def extract_audio(video_path: str, output_path: str):
 
 def embed_subtitles(video_path: str, srt_path: str, output_path: str):
     """Soft-embeds SRT as a subtitle track (no re-encoding)."""
-    # For MP4 we use mov_text, for MKV we can use srt/ass
     ext = os.path.splitext(output_path)[1].lower()
-    codec = "mov_text" if ext == ".mp4" else "srt"
-    
+
     command = [
         "ffmpeg", "-i", video_path, "-i", srt_path,
-        "-c", "copy", f"-c:s:{0}", codec,
-        "-y", output_path
+        "-map", "0", 
+        "-map", "1:s:0",
+        "-c:v", "copy",
+        "-c:a", "copy",
     ]
+
+    if ext == ".mp4":
+        command.extend(["-c:s", "mov_text"])
+    else:
+        command.extend(["-c:s", "copy"])
+
+    command.extend(["-y", output_path])
     subprocess.run(command, capture_output=True, check=True)
 
 def hardcode_subtitles(video_path: str, srt_path: str, output_path: str):

@@ -60,9 +60,10 @@ Fine-tune your output using the following flags:
 
 | Flag | Description |
 | :--- | :--- |
-| `--model [size]` | Choose Whisper model: `tiny`, `base`, `small`, `medium`, `large` or `turbo`. |
+| `--model [size]` | **Choose Whisper model:** `tiny`, `base`, `small`, `medium`, `large` or `turbo`. |
 | `--embed` | **Soft Subtitles:** Adds the SRT as a metadata track. Fast and allows users to toggle subtitles on/off in players like VLC. |
 | `--hardcode` | **Burn-in Subtitles:** Permanently draws subtitles onto the video. Essential for social media (Instagram/TikTok) where players don't support SRT files. |
+| `--output-dir` or `-o` | **Set Output Directory:** Create the destination directory if it doesn't exist and ensure all generated files (SRT, audio, and video) are saved there. |
 
 ### 📦 Batch Processing
 No need to run the command for every single file. You can pass multiple videos at once:
@@ -113,6 +114,7 @@ pytest
 - [x] Local video → SRT transcription
 - [x] Embed subtitles into video containers (`--embed`)
 - [x] Burn-in subtitles (`--hardcode`)
+- [x] Set custom output directory (`--output-dir`)
 - [ ] Multilingual transcription & translation support
 - [ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)
 

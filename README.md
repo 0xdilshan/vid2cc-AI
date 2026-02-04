@@ -130,11 +130,12 @@ pytest
 
 ## 🗺️ Roadmap
 
-- [x] Local video → SRT transcription
+- [x] Local video → SRT subtitle/ transcription
 - [x] Embed subtitles into video containers (`--embed`)
 - [x] Burn-in subtitles (`--hardcode`)
 - [x] Set custom output directory (`--output-dir`)
-- [ ] Multilingual transcription & translation support
+- [x] Multilingual transcription
+- [ ] Support translation to English
 - [ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)
 
 ## 🛠️ Tech Stack

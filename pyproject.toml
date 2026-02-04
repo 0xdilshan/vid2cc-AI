@@ -12,6 +12,7 @@ dependencies = [
     "openai-whisper",
     "ffmpeg-python",
     "torch",
+    "tqdm",
 ]
 
 [project.scripts]

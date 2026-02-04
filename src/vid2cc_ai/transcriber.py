@@ -7,4 +7,5 @@ class Transcriber:
         self.model = whisper.load_model(model_size, device=self.device)
 
     def transcribe(self, audio_path: str):
-        return self.model.transcribe(audio_path)['segments']
+        # verbose=False enables the automatic progress bar in the console
+        return self.model.transcribe(audio_path, verbose=False)['segments']

@@ -1,47 +1,51 @@
 import argparse
 import os
+from tqdm import tqdm
 from .audio import extract_audio, embed_subtitles, hardcode_subtitles
 from .transcriber import Transcriber
 from .formatter import save_as_srt
 
 def main():
-    parser = argparse.ArgumentParser(description="vid2cc-AI: Video to Subtitles")
-    parser.add_argument("input", help="Path to video file")
-    parser.add_argument("--model", default="base", help="tiny, base, small, medium, large")
-    parser.add_argument("--embed", action="store_true", help="Soft-embed subtitles into a new video file")
-    parser.add_argument("--hardcode", action="store_true", help="Burn subtitles into the video (re-encodes)")
+    parser = argparse.ArgumentParser(description="vid2cc-AI: Batch Video Subtitling")
+    # Change: nargs='+' allows one or more files
+    parser.add_argument("inputs", nargs="+", help="Path to one or more video files")
+    parser.add_argument("--model", default="base", choices=["tiny", "base", "small", "medium", "large"])
+    parser.add_argument("--embed", action="store_true", help="Soft-embed subtitles")
+    parser.add_argument("--hardcode", action="store_true", help="Burn subtitles into video")
     
     args = parser.parse_args()
-    temp_audio = "temp_audio.wav"
-    base_name = os.path.splitext(args.input)[0]
-    output_srt = base_name + ".srt"
+    
+    print(f"--- Initializing Whisper {args.model} model ---")
+    ts = Transcriber(args.model)
 
-    try:
-        print(f"--- Extracting Audio from {args.input} ---")
-        extract_audio(args.input, temp_audio)
-        
-        print(f"--- Transcribing with Whisper ({args.model}) ---")
-        ts = Transcriber(args.model)
-        segments = ts.transcribe(temp_audio)
-        
-        save_as_srt(segments, output_srt)
-        print(f"SRT saved: {output_srt}")
+    # Master progress bar for the batch
+    for video_path in tqdm(args.inputs, desc="Overall Batch Progress", unit="file"):
+        if not os.path.exists(video_path):
+            print(f"Skipping: {video_path} (File not found)")
+            continue
 
-        if args.embed:
-            out_v = f"{base_name}_embedded.mp4"
-            print(f"--- Embedding Subtitles into {out_v} ---")
-            embed_subtitles(args.input, output_srt, out_v)
-            print(f"DONE! Embedded video: {out_v}")
+        temp_audio = f"temp_{os.path.basename(video_path)}.wav"
+        base_name = os.path.splitext(video_path)[0]
+        output_srt = base_name + ".srt"
 
-        if args.hardcode:
-            out_v = f"{base_name}_hardcoded.mp4"
-            print(f"--- Hardcoding Subtitles into {out_v} (This may take a while) ---")
-            hardcode_subtitles(args.input, output_srt, out_v)
-            print(f"DONE! Hardcoded video: {out_v}")
+        try:
+            extract_audio(video_path, temp_audio)
+            
+            # Transcription with internal progress (verbose=False triggers Whisper's tqdm)
+            segments = ts.transcribe(temp_audio)
+            save_as_srt(segments, output_srt)
 
-    finally:
-        if os.path.exists(temp_audio):
-            os.remove(temp_audio)
+            if args.embed:
+                embed_subtitles(video_path, output_srt, f"{base_name}_embedded.mp4")
+
+            if args.hardcode:
+                hardcode_subtitles(video_path, output_srt, f"{base_name}_hardcoded.mp4")
+
+        except Exception as e:
+            print(f"Error processing {video_path}: {e}")
+        finally:
+            if os.path.exists(temp_audio):
+                os.remove(temp_audio)
 
 if __name__ == "__main__":
     main()

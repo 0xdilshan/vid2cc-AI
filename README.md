@@ -28,7 +28,12 @@ This tool requires FFmpeg to be installed on your system.
 - **Linux:** `sudo apt install ffmpeg`
 
 ### 2. Install vid2cc-AI
-Install directly from the source for development:
+
+```bash
+pip install vid2cc-ai
+```
+
+ **Install directly from the source for development:*
 ```bash
 git clone https://github.com/0xdilshan/vid2cc-AI.git
 cd vid2cc-AI
@@ -39,6 +44,13 @@ pip install -e .
 
 Once installed, the `vid2cc` command is available globally in your terminal.
 
+#### Examples
+
+*For maximum accuracy with toggleable subs:*
+
+```bash
+vid2cc example.mp4 --model large --embed
+```
 
 ---
 
@@ -48,16 +60,19 @@ Fine-tune your output using the following flags:
 
 | Flag | Description |
 | :--- | :--- |
-| `--model [size]` | Choose Whisper model: `tiny`, `base`, `small`, `medium`, or `large`. |
+| `--model [size]` | Choose Whisper model: `tiny`, `base`, `small`, `medium`, `large` or `turbo`. |
 | `--embed` | **Soft Subtitles:** Adds the SRT as a metadata track. Fast and allows users to toggle subtitles on/off in players like VLC. |
 | `--hardcode` | **Burn-in Subtitles:** Permanently draws subtitles onto the video. Essential for social media (Instagram/TikTok) where players don't support SRT files. |
 
-#### Examples
-
-*For maximum accuracy with toggleable subs:*
+### 📦 Batch Processing
+No need to run the command for every single file. You can pass multiple videos at once:
 
 ```bash
-vid2cc example.mp4 --model large --embed
+# Process all mp4 files in the current directory
+vid2cc *.mp4 --model small --embed
+
+# Process multiple specific files
+vid2cc video1.mp4 video2.mkv video3.mov --model base --embed
 ```
 
 ## 📦 Usage as a Library

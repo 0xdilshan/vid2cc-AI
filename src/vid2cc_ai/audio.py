@@ -30,11 +30,11 @@ def get_video_codec(video_path: str) -> str:
         # Fallback to h264 if probe fails
         return "h264"
     
-@functools.lru_cache(max_size=None)
+@functools.lru_cache(maxsize=None)
 def has_encoder(encoder_name: str) -> bool:
     """Checks if the current FFmpeg installation supports a specific encoder."""
     try:
-        # We search the list of encoders for the specific name
+        # Search the list of encoders for the specific name
         result = subprocess.run(
             ["ffmpeg", "-encoders"], 
             capture_output=True, text=True, check=True
@@ -64,14 +64,35 @@ def embed_subtitles(video_path: str, srt_path: str, output_path: str):
     subprocess.run(command, capture_output=True, check=True)
 
 def hardcode_subtitles(video_path: str, srt_path: str, output_path: str):
-    """Burns subtitles directly into the video frames (requires re-encoding)."""
-    # The 'subtitles' filter requires escaping backslashes on Windows
-    safe_srt_path = srt_path.replace("\\", "/").replace(":", "\\:")
+    """Burns subtitles with smart codec detection (requires re-encoding)."""
+    input_codec = get_video_codec(video_path)
+    
+    # Logic for AV1
+    if input_codec == "av1" and has_encoder("libsvtav1"):
+        encoder = "libsvtav1"
+        crf = "35"
+        preset = "10"
+    # Logic for HEVC (x265)
+    elif input_codec == "hevc" and has_encoder("libx265"):
+        encoder = "libx265"
+        crf = "28"
+        preset = "veryfast"
+    # Fallback to H.264
+    else:
+        encoder = "libx264"
+        crf = "23"
+        preset = "veryfast"
+
+    safe_srt = srt_path.replace("\\", "/").replace(":", "\\:")
     
     command = [
         "ffmpeg", "-i", video_path,
-        "-vf", f"subtitles='{safe_srt_path}'",
-        "-c:a", "copy", # Keep original audio
+        "-vf", f"subtitles='{safe_srt}'",
+        "-c:v", encoder,
+        "-preset", preset,
+        "-crf", crf,
+        "-c:a", "copy",
         "-y", output_path
     ]
+    
     subprocess.run(command, capture_output=True, check=True)

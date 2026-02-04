@@ -12,19 +12,18 @@
 
 # Table of contents
 
-- [vid2cc-AI 🎙️🎬](#vid2cc-ai-)
-  - [🚀 Key Features](#-key-features)
-  - [⚙️ Installation](#-installation)
-    - [1. Prerequisite: FFmpeg](#1-prerequisite-ffmpeg)
-    - [2. Install vid2cc-AI](#2-install-vid2cc-ai)
-  - [📖 How To Use](#-how-to-use)
-    - [🛠️ Advanced Options](#-advanced-options)
-    - [📦 Batch Processing](#-batch-processing)
-    - [📦 Usage as a Library](#-usage-as-a-library)
-  - [🧪 Testing](#-testing)
-  - [🗺️ Roadmap](#-roadmap)
-  - [🛠️ Tech Stack](#-tech-stack)
-  - [📄 License](#-license)
+- [🚀 Key Features](#-key-features)
+- [⚙️ Installation](#-installation)
+  - [1. Prerequisite: FFmpeg](#1-prerequisite-ffmpeg)
+  - [2. Install vid2cc-AI](#2-install-vid2cc-ai)
+- [📖 How To Use](#-how-to-use)
+  - [🛠️ Advanced Options](#-advanced-options)
+  - [📦 Batch Processing](#-batch-processing)
+  - [📦 Usage as a Library](#-usage-as-a-library)
+- [🧪 Testing](#-testing)
+- [🗺️ Roadmap](#-roadmap)
+- [🛠️ Tech Stack](#-tech-stack)
+- [📄 License](#-license)
 
 ---
 

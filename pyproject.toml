@@ -8,11 +8,35 @@ version = "0.1.1"
 description = "AI-powered subtitle generator using Whisper and FFmpeg"
 readme = "README.md"
 requires-python = ">=3.9"
+
+authors = [
+  { name = "Dilshan", email = "257371012+0xdilshan@users.noreply.github.com" }
+]
+
 dependencies = [
     "openai-whisper",
     "torch",
     "tqdm",
 ]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/0xdilshan/vid2cc-AI"
+Source = "https://github.com/0xdilshan/vid2cc-AI"
+Documentation = "https://github.com/0xdilshan/vid2cc-AI#readme"
+Issues = "https://github.com/0xdilshan/vid2cc-AI/issues"
+Discussions = "https://github.com/0xdilshan/vid2cc-AI/discussions"
+Releases = "https://github.com/0xdilshan/vid2cc-AI/releases"
+CI = "https://github.com/0xdilshan/vid2cc-AI/actions"
 
 [project.scripts]
 vid2cc = "vid2cc_ai.cli:main"

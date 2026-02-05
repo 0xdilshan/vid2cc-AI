@@ -83,6 +83,7 @@ Fine-tune your output using the following flags:
 | `--embed` | **Soft Subtitles:** Adds the SRT as a metadata track. Fast and allows users to toggle subtitles on/off in players like VLC. |
 | `--hardcode` | **Burn-in Subtitles:** Permanently draws subtitles onto the video. Essential for social media (Instagram/TikTok) where players don't support SRT files. |
 | `--output-dir` or `-o` | **Set Output Directory:** Create the destination directory if it doesn't exist and ensure all generated files (SRT, audio, and video) are saved there. |
+| `--translate` or `-t` | **Translate to English:** Automatically translate any supported language transcription to English |
 
 ### 📦 Batch Processing
 No need to run the command for every single file. You can pass multiple videos at once:
@@ -135,7 +136,7 @@ pytest
 - [x] Burn-in subtitles (`--hardcode`)
 - [x] Set custom output directory (`--output-dir`)
 - [x] Multilingual transcription
-- [ ] Support translation to English
+- [x] Support translation to English
 - [ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)
 
 ## 🛠️ Tech Stack

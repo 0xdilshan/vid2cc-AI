@@ -16,6 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description="vid2cc-AI: Batch Video Subtitling")
     parser.add_argument("inputs", nargs="+", help="Path to one or more video files")
     parser.add_argument("-m", "--model", default="base", choices=["tiny", "base", "small", "medium", "large", "turbo"])
+    parser.add_argument("-t", "--translate", action="store_true", help="Translate subtitles to English")
     parser.add_argument("--embed", action="store_true", help="Soft-embed subtitles")
     parser.add_argument("--hardcode", action="store_true", help="Burn subtitles into video")
     parser.add_argument("-o", "--output-dir", help="Directory to save all generated files")
@@ -47,7 +48,10 @@ def main():
         try:
             extract_audio(video_path, temp_audio)
             
-            segments = ts.transcribe(temp_audio)
+            # Determine task based on flag
+            task = "translate" if args.translate else "transcribe"
+            segments = ts.transcribe(temp_audio, task=task)
+            
             save_as_srt(segments, output_srt)
 
             if args.embed:

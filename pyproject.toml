@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vid2cc-ai"
-version = "0.1.2"
+version = "0.1.3"
 description = "AI-powered subtitle generator using Whisper and FFmpeg"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -34,9 +34,7 @@ Homepage = "https://github.com/0xdilshan/vid2cc-AI"
 Source = "https://github.com/0xdilshan/vid2cc-AI"
 Documentation = "https://github.com/0xdilshan/vid2cc-AI#readme"
 Issues = "https://github.com/0xdilshan/vid2cc-AI/issues"
-Discussions = "https://github.com/0xdilshan/vid2cc-AI/discussions"
 Releases = "https://github.com/0xdilshan/vid2cc-AI/releases"
-CI = "https://github.com/0xdilshan/vid2cc-AI/actions"
 
 [project.scripts]
 vid2cc = "vid2cc_ai.cli:main"

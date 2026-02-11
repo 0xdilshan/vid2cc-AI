@@ -53,6 +53,7 @@ pip install vid2cc-ai
 ```
 
  **Install directly from the source for development:*
+
 ```bash
 git clone https://github.com/0xdilshan/vid2cc-AI.git
 cd vid2cc-AI
@@ -137,7 +138,7 @@ pytest
 - [x] Set custom output directory (`--output-dir`)
 - [x] Multilingual transcription
 - [x] Support translation to English
-- [ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)
+- ~~[ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)~~
 
 ## 🛠️ Tech Stack
 

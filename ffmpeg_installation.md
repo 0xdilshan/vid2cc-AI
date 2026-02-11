@@ -1,9 +1,11 @@
+#FFMPEG Installation Guide
+
 **vid2cc-AI** requires **FFmpeg** to be installed and added to your system's `PATH`.  
 FFmpeg handles all audio extraction and subtitle embedding tasks.
 
 ---
 
-### 🍎 macOS
+## 🍎 macOS
 
 The easiest way to install FFmpeg on macOS is via **Homebrew**:
 
@@ -13,7 +15,7 @@ brew install ffmpeg
 
 ---
 
-### 🪟 Windows
+## 🪟 Windows
 
 Choose one of the following modern package managers.
 
@@ -29,7 +31,7 @@ choco install ffmpeg
 
 ---
 
-### 🐧 Linux
+## 🐧 Linux
 
 Use the command that matches your distribution.
 

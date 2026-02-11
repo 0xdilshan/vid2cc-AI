@@ -1,4 +1,4 @@
-#FFMPEG Installation Guide
+# FFMPEG Installation Guide
 
 **vid2cc-AI** requires **FFmpeg** to be installed and added to your system's `PATH`.  
 FFmpeg handles all audio extraction and subtitle embedding tasks.

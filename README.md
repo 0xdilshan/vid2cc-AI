@@ -10,7 +10,7 @@
 
 ---
 
-# Table of contents
+## Table of contents
 
 - [🚀 Key Features](#-key-features)
 - [⚙️ Installation](#-installation)
@@ -139,6 +139,7 @@ pytest
 - [x] Multilingual transcription
 - [x] Support translation to English
 - ~~[ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)~~
+- [ ] Google Colab notebook support
 
 ## 🛠️ Tech Stack
 

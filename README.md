@@ -20,6 +20,7 @@
   - [🛠️ Advanced Options](#-advanced-options)
   - [📦 Batch Processing](#-batch-processing)
   - [📦 Usage as a Library](#-usage-as-a-library)
+- [☁️ Run on Google Colab (with UI)](#run-on-google-colab-with-ui)
 - [🧪 Testing](#-testing)
 - [🗺️ Roadmap](#-roadmap)
 - [🛠️ Tech Stack](#-tech-stack)
@@ -97,6 +98,8 @@ vid2cc *.mp4 --model small --embed
 vid2cc video1.mp4 video2.mkv video3.mov --model base --embed
 ```
 
+---
+
 ### 📦 Usage as a Library
 
 You can integrate **vid2cc-AI** directly into your Python projects:
@@ -113,6 +116,22 @@ for s in segments:
     print(f"[{s['start']:.2f}s] {s['text']}")
 ```
 
+---
+
+## Run on Google Colab (with UI)
+
+You can run vid2cc-ai directly in your browser using Google Colab. This version includes a friendly interface to manage your Google Drive files and transcription settings without writing code.
+
+1. **Open the Notebook:** [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/0xdilshan/vid2cc-AI/blob/main/Vid2CC_AI.ipynb).
+2. **Install & Mount:** Run the first cell to install `vid2cc-ai` and connect your Google Drive.
+3. **Configure UI:** * **Video Path:** Right-click your video in the Colab file sidebar and select "Copy Path."
+
+   - **Model:** Choose `turbo` or `small` for speed, large for accuracy.
+   - **Output:** Select if you want Soft Subtitles (toggleable) or Hardcoded (burned-in).
+
+4. **Start:** Click **"Start Processing"** and find your result in your Drive folder.
+
+⚡ For 10x faster transcription, ensure your Colab runtime is set to GPU (`Runtime` > `Change runtime type` > `T4 GPU`).
 
 ---
 
@@ -139,7 +158,9 @@ pytest
 - [x] Multilingual transcription
 - [x] Support translation to English
 - ~~[ ] Transcription from YouTube/Vimeo URLs (`yt-dlp`)~~
-- [ ] Google Colab notebook support
+- [x] Google Colab notebook support
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -147,6 +168,8 @@ pytest
 - **Media Engine:** FFmpeg
 - **Core:** Python 3.9+, PyTorch
 - **CLI Framework:** Argparse
+
+---
 
 ## 📄 License
 

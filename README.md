@@ -133,6 +133,8 @@ You can run vid2cc-ai directly in your browser using Google Colab. This version 
 
 ⚡ For 10x faster transcription, ensure your Colab runtime is set to GPU (`Runtime` > `Change runtime type` > `T4 GPU`).
 
+[![colab-notebook-preview](img/google-colab-example.jpg)](https://colab.research.google.com/github/0xdilshan/vid2cc-AI/blob/main/Vid2CC_AI.ipynb)
+
 ---
 
 ## 🧪 Testing
